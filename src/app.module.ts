@@ -1,15 +1,15 @@
-import { UsersModule } from './users/users.module';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 
 import { UsersController } from './users/users.controller';
 import { UsersService } from './users/users.service';
 
 import { User } from './models/user.entity';
 import { ProfessionalType } from './models/professionalType.entity';
+import { ProfileTypesModule } from './profile-types/profile-types.module';
+import { UsersModule } from './users/users.module';
+import { ProfileTypesController } from './profile-types/profile-types.controller';
+import { ProfileTypesService } from './profile-types/profile-types.service';
 
 @Module({
   imports: [
@@ -26,14 +26,15 @@ import { ProfessionalType } from './models/professionalType.entity';
       entities: [User, ProfessionalType],
       migrations: ['./src/database/migrations/**/*.ts'],
     }),
+    ProfileTypesModule,
   ],
   controllers: [
-    AppController,
     UsersController,
+    ProfileTypesController,
   ],
   providers: [
-    AppService,
     UsersService,
+    ProfileTypesService,
   ],
 })
 export class AppModule { }

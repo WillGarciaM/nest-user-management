@@ -2,7 +2,6 @@ import { Entity, PrimaryGeneratedColumn, Column, UpdateDateColumn, CreateDateCol
 
 @Entity()
 export class ProfessionalType {
-  [x: string]: any;
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -20,9 +19,4 @@ export class ProfessionalType {
 
   @DeleteDateColumn()
   deletedAt: Date;
-
-  /*
-  @OneToMany((type) => Category, (category) => category.parent)
-  children: Category[]
-  */
 }
